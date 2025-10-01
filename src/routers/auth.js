@@ -17,14 +17,14 @@ router.post(
   ctrlWrapper(registerUserController),
 );
 
-export default router;
-
 router.post(
   '/auth/login',
   validateBody(loginSchema),
   ctrlWrapper(loginUserController),
 );
 
-router.post('auth/refresh', ctrlWrapper(refreshUserSessionController));
+router.post('/auth/refresh', ctrlWrapper(refreshUserSessionController));
 
-router.post('auth/logout', ctrlWrapper(logoutUserController));
+router.post('/auth/logout', ctrlWrapper(logoutUserController));
+
+export default router;

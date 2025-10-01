@@ -10,10 +10,10 @@ export const authenticate = async (req, res, next) => {
     return;
   }
 
-  const bearer = authHeader.split('')[0];
-  const token = authHeader.split('')[0];
+  const bearer = authHeader.split(' ')[0];
+  const token = authHeader.split(' ')[1];
 
-  if (bearer !== 'Bearer' || token) {
+  if (bearer !== 'Bearer' || !token) {
     next(createHttpError(401, 'Auth header should be of type Bearer!'));
     return;
   }
@@ -28,7 +28,7 @@ export const authenticate = async (req, res, next) => {
   const isAccessTokenExpired =
     new Date() > new Date(session.accessTokenValidUntil);
 
-  if (!isAccessTokenExpired) {
+  if (isAccessTokenExpired) {
     next(createHttpError(401, 'AccessToken expired!'));
   }
 

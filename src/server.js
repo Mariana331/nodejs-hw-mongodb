@@ -23,9 +23,8 @@ export const setupServer = () => {
       },
     }),
   );
-
-  app.use(contactsRouters);
   app.use(usersRouters);
+  app.use(contactsRouters);
 
   app.use(notFoundHandler);
 
