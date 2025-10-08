@@ -7,6 +7,7 @@ import {
 } from '../services/contacts.js';
 
 import createHttpError from 'http-errors';
+
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
@@ -68,6 +69,7 @@ export const createContactController = async (req, res) => {
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
   const userId = req.user._id;
+
   const contact = await updateContact(contactId, userId, req.body);
 
   if (!contact) {
