@@ -14,8 +14,6 @@ requestBody:
         required:
           - name
           - phoneNumber
-          - email
-          - isFavourite
           - contactType
           - userId
         properties:
@@ -29,11 +27,9 @@ requestBody:
             example: '+380987867668'
           email:
             type: string
-            description: Contact email
             example: olenna@gmail.com
           isFavourite:
             type: boolean
-            description: Contact isFavourite
             example: false
           contactType:
             type: string
@@ -44,6 +40,10 @@ requestBody:
           userId:
             type: string
             example: '68dcdfa0348827d943a8d029'
+          photo:
+            type: string
+            format: binary
+            description: Contact photo
 
 responses:
   '201':

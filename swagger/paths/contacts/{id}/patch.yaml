@@ -8,7 +8,6 @@ security:
 parameters:
   - in: path
     name: id
-    required: true
     schema:
       type: string
     description: ID of the contact to patch
@@ -42,6 +41,10 @@ requestBody:
             enum: ['work', 'home', 'personal']
             default: 'personal'
             example: work
+          photo:
+            type: string
+            format: binary
+            description: Contact photo
 
 responses:
   '200':

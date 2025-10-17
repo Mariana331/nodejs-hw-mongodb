@@ -12,6 +12,9 @@
   "servers": [
     {
       "url": "http://localhost:3000"
+    },
+    {
+      "url": "https://nodejs-hw-mongodb-6-08ga.onrender.com"
     }
   ],
   "tags": [
@@ -99,7 +102,6 @@
           {
             "in": "path",
             "name": "id",
-            "required": true,
             "schema": {
               "type": "string"
             },
@@ -143,6 +145,11 @@
                     ],
                     "default": "personal",
                     "example": "work"
+                  },
+                  "photo": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Contact photo"
                   }
                 }
               }
@@ -370,8 +377,6 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "email",
-                  "isFavourite",
                   "contactType",
                   "userId"
                 ],
@@ -388,12 +393,10 @@
                   },
                   "email": {
                     "type": "string",
-                    "description": "Contact email",
                     "example": "olenna@gmail.com"
                   },
                   "isFavourite": {
                     "type": "boolean",
-                    "description": "Contact isFavourite",
                     "example": false
                   },
                   "contactType": {
@@ -410,6 +413,11 @@
                   "userId": {
                     "type": "string",
                     "example": "68dcdfa0348827d943a8d029"
+                  },
+                  "photo": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Contact photo"
                   }
                 }
               }
