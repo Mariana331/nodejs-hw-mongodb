@@ -1,0 +1,72 @@
+tags:
+  - Contacts
+summary: Post contact
+operationId: postContact
+description: Post a contact
+security:
+  - bearerAuth: []
+
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - email
+          - isFavourite
+          - contactType
+          - userId
+        properties:
+          name:
+            description: Contact name
+            type: string
+            example: Victor
+          phoneNumber:
+            type: string
+            description: Contact phoneNumber
+            example: '+380987867668'
+          email:
+            type: string
+            description: Contact email
+            example: olenna@gmail.com
+          isFavourite:
+            type: boolean
+            description: Contact isFavourite
+            example: false
+          contactType:
+            type: string
+            description: Contact contactType
+            enum: ['work', 'home', 'personal']
+            default: 'personal'
+            example: work
+          userId:
+            type: string
+            example: '68dcdfa0348827d943a8d029'
+
+responses:
+  '201':
+    description: Post a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a contact!
+            data:
+              $ref: ../../components/schemas/contact.yaml
+
+  '404':
+    $ref: ../../components/responses/404.yaml
+  '500':
+    $ref: ../../components/responses/500.yaml
