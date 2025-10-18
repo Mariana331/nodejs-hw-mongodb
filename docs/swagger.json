@@ -102,6 +102,7 @@
           {
             "in": "path",
             "name": "id",
+            "required": true,
             "schema": {
               "type": "string"
             },
@@ -109,7 +110,7 @@
           }
         ],
         "requestBody": {
-          "required": true,
+          "required": false,
           "content": {
             "multipart/form-data": {
               "schema": {
@@ -275,10 +276,23 @@
           },
           {
             "in": "query",
-            "name": "filter",
+            "name": "contactType",
             "schema": {
               "type": "string",
-              "example": "contactType"
+              "enum": [
+                "work",
+                "home",
+                "personal"
+              ],
+              "example": "work"
+            }
+          },
+          {
+            "in": "query",
+            "name": "isFavourite",
+            "schema": {
+              "type": "boolean",
+              "example": true
             }
           }
         ],
@@ -410,10 +424,6 @@
                     "default": "personal",
                     "example": "work"
                   },
-                  "userId": {
-                    "type": "string",
-                    "example": "68dcdfa0348827d943a8d029"
-                  },
                   "photo": {
                     "type": "string",
                     "format": "binary",
@@ -476,8 +486,11 @@
         "required": [
           "name",
           "phoneNumber",
+          "email",
+          "isFavourite",
           "contactType",
           "userId",
+          "photo",
           "createdAt",
           "updatedAt"
         ],
@@ -491,6 +504,16 @@
             "type": "string",
             "description": "Contact phoneNumber",
             "example": "+380987867668"
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact email",
+            "example": "olenna@gmail.com"
+          },
+          "isFavourite": {
+            "type": "boolean",
+            "description": "Contact isFavourite",
+            "example": false
           },
           "contactType": {
             "type": "string",
@@ -507,6 +530,11 @@
             "type": "string",
             "description": "Contact userId",
             "example": "68dcdfa0348827d943a8d029"
+          },
+          "photo": {
+            "type": "string",
+            "format": "binary",
+            "description": "Contact photo"
           },
           "createdAt": {
             "type": "string",
