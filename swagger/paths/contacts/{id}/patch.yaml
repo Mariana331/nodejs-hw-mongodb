@@ -8,12 +8,13 @@ security:
 parameters:
   - in: path
     name: id
+    required: true
     schema:
       type: string
     description: ID of the contact to patch
 
 requestBody:
-  required: true
+  required: false
   content:
     multipart/form-data:
       schema:

@@ -28,10 +28,16 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: filter
+    name: contactType
     schema:
       type: string
-      example: contactType
+      enum: ['work', 'home', 'personal']
+      example: 'work'
+  - in: query
+    name: isFavourite
+    schema:
+      type: boolean
+      example: true
 
 responses:
   '200':
